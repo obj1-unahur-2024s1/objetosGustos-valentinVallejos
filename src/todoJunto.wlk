@@ -1,4 +1,4 @@
-                        //  COLORES
+                       //  COLORES
 object rojo {
 	method esFuerte(){
 		return true
@@ -181,4 +181,72 @@ object placa {
 		objetoDentro = objeto
 	}
 	
+}
+
+                             // personas
+
+
+object rosa{
+	method leGusta(objeto) {
+		return  objeto.peso() > 2000
+		
+	}
+}
+
+object estefania {
+	method leGusta(objeto) {
+		return objeto.color().esFuerte()
+	}
+}
+
+object luisa {
+	method leGusta(objeto) {
+		return objeto.material().esBrillante()
+	}
+}
+
+object juan {
+	method leGusta(objeto){
+		return  (objeto.color().esFuerte()) && ( objeto.peso().betweeen(1200,1800) )  
+	}
+}
+
+                             //BOLICHITO
+
+                             
+object bolichito {
+	var vidriera = remera
+	var mostrador = placa
+	
+	method esBrillante(){
+		return ( vidriera.material().esBrillante() ) && ( mostrador.material().esBrillante() )
+	}
+	
+	method esMonocromatico(){
+	
+	 return vidriera.color() == mostrador.color()
+    }
+    
+    method estaDesequilibrado() {
+    	return vidriera.peso() < mostrador.peso()
+    }
+    
+    method tieneAlgoDeColor(color){
+    	return (vidriera.color() == color)  || ( mostrador.color() == color)
+    }
+    
+    method puedeMejorar(){
+    	return self.esMonocromatico() || self.estaDesequilibrado()         
+    }
+    
+    method puedeOfrecerleAlgoA(persona){
+    	return persona.leGusta(vidriera) || persona.leGusta(mostrador) 
+    }
+    
+    method ponerEnLaVidriera(objeto){
+    	vidriera = objeto
+    }
+     method ponerEnElMostrador(objeto){
+    	mostrador = objeto
+    }
 }
